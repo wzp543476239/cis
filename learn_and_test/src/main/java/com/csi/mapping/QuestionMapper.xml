@@ -5,13 +5,14 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="answer" property="answer" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="question_type" property="questionType" jdbcType="VARCHAR" />
     <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="score" property="score" jdbcType="INTEGER" />
-    <result column="course" property="course" jdbcType="INTEGER" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
+     <result column="paper_id" property="paperId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, title, answer, type, options, score ,course
+    id, title, answer, question_type, options, score ,course, paper_id
 </sql>
 
   <select id="findAllCachet" resultMap="BaseResultMap">
@@ -20,4 +21,8 @@
     from question
 </select>
 
+    <insert id="insertQuestion" parameterType="com.csi.entity.Question">
+        insert into question (title,answer,question_type,optionA,optionB,optionC,optionD,score,course,paper_id)     
+        values (#{title},#{answer},#{questionType},#{optionA},#{optionB},#{optionC},#{optionD},#{score},#{course},#{paperId})
+    </insert>
 </mapper>

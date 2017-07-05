@@ -3,9 +3,9 @@ package com.csi.entity;
 public class TestPaper {
     private Integer id;
 
-    private String questionIds;
+    private String course; // 所属科目
 
-    private Integer scordid;
+    private String testName; // 试卷名称
 
     public Integer getId() {
         return id;
@@ -15,19 +15,39 @@ public class TestPaper {
         this.id = id;
     }
 
-    public String getQuestionIds() {
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    //private String questionIds;
+
+    //private Integer markId;
+
+    /*    public String getQuestionIds() {
         return questionIds;
     }
 
     public void setQuestionIds(String questionIds) {
         this.questionIds = questionIds == null ? null : questionIds.trim();
+    }*/
+
+/*    public Integer getMarkId() {
+        return markId;
     }
 
-    public Integer getScordid() {
-        return scordid;
-    }
-
-    public void setScordid(Integer scordid) {
-        this.scordid = scordid;
-    }
+    public void setMarkId(Integer markId) {
+        this.markId = markId;
+    }*/
 }

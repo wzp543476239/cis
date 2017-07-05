@@ -3,15 +3,23 @@
 <mapper namespace="com.csi.dao.TestPaperMapper" >
   <resultMap id="BaseResultMap" type="com.csi.entity.TestPaper" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="question_ids" property="questionIds" jdbcType="VARCHAR" />
-    <result column="scordId" property="scordid" jdbcType="INTEGER" />
+    <result column="test_name" property="testName" jdbcType="VARCHAR" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, question_ids, scordId
+    id, test_name, course
   </sql>
    <select id="findAllTestPaper" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from test_paper
-</select>
+   </select>
+
+    <insert id="insertTestPaper" parameterType="com.csi.entity.TestPaper">
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
+        insert into test_paper (id,course,test_name)
+        values (#{course},#{testName})
+    </insert>
 </mapper>

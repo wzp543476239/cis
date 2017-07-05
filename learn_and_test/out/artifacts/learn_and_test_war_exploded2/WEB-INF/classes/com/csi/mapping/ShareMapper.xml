@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csi.dao.ShareMapper">
+    <resultMap id="BaseResultMap" type="com.csi.entity.Share" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="createBy" property="createBy" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="DATE" />
+        <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+        <result column="classify" property="classify" jdbcType="VARCHAR" />
+    </resultMap>
+
+<!--查询所有    -->
+    <select id="query" resultMap="BaseResultMap">
+        SELECT * from share
+          <if test="classify!=null and classify!=''">
+              where classify = #{classify}
+          </if>
+    </select>
+
+<!--发布    -->
+    <insert id="add" parameterType="com.csi.entity.Share">
+        INSERT INTO share
+                  (title,content,createBy,createDate,attribute,classify)
+          VALUES
+                  (#{title},#{content},#{createBy},#{createDate},#{attribute},#{classify})
+    </insert>
+
+</mapper>

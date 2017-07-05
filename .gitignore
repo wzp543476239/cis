@@ -1,3 +1,4 @@
 target
 *.iml
-/learn_and_test/.idea
+.idea
+out

@@ -14,5 +14,6 @@
 Hello World！
 <br>
 <a href="<%=request.getContextPath()%>/test/test.do?id=1">点击调转</a>
+<a href="<%=request.getContextPath()%>/test_paper_add.jsp">添加试卷</a>
 </body>
 </html>
